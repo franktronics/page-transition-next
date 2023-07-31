@@ -1,0 +1,108 @@
+.page-transition {
+  --transition-color: #00030e;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 100%;
+  width: 100%;
+  height: calc(100dvh + 100px);
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+
+  & > div {
+    width: 100%;
+    background-color: var(--transition-color);
+    height: calc(100dvh - 100px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  //on a 2 svg, un vers le haut et l'autre vers le bas
+  & > svg:last-child {
+    transform: rotateZ(180deg);
+  }
+}
+.page-transition-state {
+  top: -10px;
+}
+
+//animation du titre de page
+.page-transition-words__ctrl .page-word-transition {
+  h3 > span {
+    animation: 0.6s h3-anime-word cubic-bezier(0.7, 0, 0.2, 1) backwards;
+  }
+  h3::after {
+    animation: 0.6s h3-after-word cubic-bezier(0.7, 0, 0.2, 1) backwards;
+  }
+}
+.page-word-transition {
+  position: relative;
+  width: fit-content;
+  top: -50px;
+  h3 {
+    color: #fff;
+    font-size: 3rem;
+    text-transform: uppercase;
+    padding: 0;
+    overflow: hidden;
+    line-height: 100%;
+  }
+  h3 > span {
+    display: block;
+    animation: 0.6s h3-anime-word-end cubic-bezier(0.7, 0, 0.2, 1) forwards;
+    line-height: 100%;
+  }
+  h3::after {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 0;
+    right: 0;
+    height: max(5px, 0.2rem);
+    background: #fff;
+    animation: 0.6s h3-after-word-end cubic-bezier(0.7, 0, 0.2, 1) forwards;
+  }
+}
+@keyframes h3-anime-word {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes h3-anime-word-end {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+}
+@keyframes h3-after-word {
+  0% {
+    right: 110%;
+    opacity: 0;
+  }
+  100% {
+    right: 0%;
+    opacity: 1;
+  }
+}
+@keyframes h3-after-word-end {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: 110%;
+    opacity: 0;
+  }
+}

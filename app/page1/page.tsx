@@ -1,14 +1,15 @@
 import { Anchor } from '@/components/anchor/Anchor';
 import { PageTransition } from '@/components/page-transition/PageTransition';
 
-export default function Home() {
+const Page1 = () => {
   return (
     <>
-      <PageTransition pageTitle="Home" />
+      <PageTransition pageTitle="Page 1" />
       <main className="page-center">
-        <Anchor href="/page1">To Page 1</Anchor>
-        <Anchor href="/page2">To Page 2</Anchor>
+        Page 1<Anchor href="/">To Home</Anchor>
       </main>
     </>
   );
-}
+};
+
+export default Page1;
